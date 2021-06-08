@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        include partials/headers
+    body.login
+        .contenedor-formulario 
+            h1 Iniciar Sesion
+            if locals.flashMessage
+                .alertas 
+                    each categoria in Object.keys(locals.flashMessage)
+                        each error in flashMessage[categoria]
+                            .alerta(class=`${categoria}`)
+                                p= error
+                                
+            form#formulario.caja.caja-login(action="/login" method="POST") 
+                .campo 
+                    label(for="email") E-Mail: 
+                    input(type="email" name="email" placeholder="Ingrese Su Email" value= email)
+                .campo 
+                    label(for="password") Password: 
+                    input(type="password" name="password" placeholder="Ingrese Su Password" value= password)
+                .campo.enviar 
+                    input.boton(type="submit", value="Iniciar Sesion")
+                .campo 
+                    a(href="/register") ¿Aun no tienes Cuenta? Registrate 
+                    a(href="/restablecer") ¿Olvidaste Tu Contraseña?

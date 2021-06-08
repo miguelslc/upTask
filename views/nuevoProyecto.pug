@@ -1,0 +1,11 @@
+extends layout 
+
+include mixins/crearProyecto
+block contenido 
+    .contenido-principal
+        h1 #{nombrePagina}
+
+        if errores
+            each error in errores 
+                .error= error.texto 
+        +crearProyecto(proyecto)
