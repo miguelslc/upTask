@@ -65,9 +65,9 @@ app.use(express.json());
 //agregamos las rutas
 app.use('/', routes());
 
-const host = process.env.HOST || '0.0.0.0';
+//const host = process.env.HOST || '0.0.0.0';
 const port = process.env.PORT || 3000;
 
-app.listen(host, port, ()=>{
+app.listen(process.env.PORT || 3000, () => {
     console.log('server running on port '+port)
 });
